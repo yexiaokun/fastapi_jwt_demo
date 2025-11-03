@@ -11,4 +11,3 @@ env/
 fastapi_jwt_demo/
 
 # OS
-requirements.txt
