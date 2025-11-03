@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, Header
 from auth import router as auth_router
 from utils import verity_token
 
-app = FastAPI(title="JWT Login Demo")
+app = FastAPI(title="JWT + Redis Demo")
 
 app.include_router(auth_router)
 

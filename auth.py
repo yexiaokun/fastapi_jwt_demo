@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from utils import create_access_token
+from utils import create_access_token, logout
+from redis_client import r
 
 router = APIRouter()
 
@@ -19,3 +20,7 @@ def login(user: LoginRequest):
         token = create_access_token({"username": user.username})
         return {"access_token": token, "token_type": "bearer"}
     raise HTTPException(status_code=401,detail="用户名或密码错误")
+
+@router.post("/logout")
+def logout_user(user: LoginRequest):
+    return logout(user.username)
